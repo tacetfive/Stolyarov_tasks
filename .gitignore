@@ -1,0 +1,19 @@
+*.swp
+*.inc
+*.o
+example*
+# ignore all executable files
+p3t01_hello 
+p3t07_isA 
+p3t11_sum_lines 
+p3t16_wordCount 
+p3t18_readDecimalNumber 
+p3t19_binToDec 
+p4t07_rec 
+p4t13 
+p4t13clear 
+p4t14 
+p4t18_241 
+p4t18_243 
+p4t23_248
+
