@@ -1,38 +1,39 @@
 #include <cstdio>
-/*
-class I {
-    int row, col;
-public:
-    I(int r, int c) { 
-        row = r; 
-        col = c; 
-    }
-    int Get_row() { return row; }
-    int Get_col() { return col; }
-};
+
+#define MSIZE 9
 
 class M {
-    int matrix[9];
-    int size = sizeof(matrix) / sizeof(matrix[0]);
+    int matrix[MSIZE];
 public:
     M() : matrix{ 1, 0, 0, 0, 1, 0, 0, 0, 1, } { } 
-    M(const M& other) {
-        for ( int idx = 0; idx < size; idx++ )
+    M(const M& other) { // copy constructor
+        for ( int idx = 0; idx < MSIZE; idx++ )
             matrix[idx] = other.matrix[idx];
     }
-    int& operator[]( I idx ) {
-        int array_idx = ( idx.Get_row() - 1 ) * 3 + ( idx.Get_col() - 1 );
-        return matrix[array_idx];
+    class Row_index {
+        int row_idx;
+        M *current_matrix;
+    public:
+        Row_index(int r_idx, M *c_matrix) 
+            : row_idx(r_idx), current_matrix(c_matrix) { }
+        int& operator[](int idx) {
+            int array_idx = ( row_idx - 1 ) * 3 + ( idx - 1 );
+            return current_matrix->matrix[array_idx];
+        }
+    };
+    friend class Row_index;
+    Row_index operator[]( int row ) {
+        return Row_index(row, this);
     }
     M operator+(const M& matrix_2) {
         M result;
         int idx;
-        for ( idx = 0; idx < size; ++idx )
+        for ( idx = 0; idx < MSIZE; ++idx )
             result.matrix[idx] = matrix[idx] + matrix_2.matrix[idx];
         return result;
     }
 };
-*/
+
 int main()
 {
     M m1;
