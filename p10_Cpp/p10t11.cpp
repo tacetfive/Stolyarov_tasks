@@ -1,9 +1,7 @@
 #include <cstdio>
 #include <math.h>
 
-
 class Body {
-protected:
     double dens;
 public:
     Body(double this_dens) { dens = this_dens; }
